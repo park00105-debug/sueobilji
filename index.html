@@ -10,7 +10,9 @@
 <link rel="apple-touch-icon" href="icon-512.png">
 <style>
   html,body{margin:0;height:100%;background:#fff}
-  iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
+  /* 구글 안내줄(약 44px)이 화면 밖으로 나가도록 앱을 위로 올려요. 줄이 남으면 숫자를 키우고, 앱 윗부분이 잘리면 줄여요 */
+  :root{--hide:44px}
+  iframe{position:fixed;left:0;top:calc(var(--hide) * -1);width:100%;height:calc(100% + var(--hide));border:0}
 </style>
 </head>
 <body>

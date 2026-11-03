@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>하이핏 운동일지</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="m.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<style>
+  html,body{margin:0;height:100%;background:#fff;font-family:sans-serif}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
+  #msg{display:none;padding:48px 24px;text-align:center;color:#333;line-height:1.7}
+</style>
+</head>
+<body>
+<div id="msg">센터에서 받은 운동일지 링크로 먼저 한 번 열어 주세요.<br>그 뒤에는 홈 화면 아이콘으로 바로 열려요.</div>
+<iframe id="app" allow="clipboard-write; fullscreen" referrerpolicy="no-referrer-when-downgrade" style="display:none"></iframe>
+<script>
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbzBlUn9Nqvx299CSJBYXM_X4U4940llUbmq7DzhxUl3n-COVu4faJQ82Ty3gg6dioNV/exec';
+  var v = '';
+  try { v = new URLSearchParams(location.search).get('v') || ''; } catch (e) {}
+  try {
+    if (v) localStorage.setItem('hf_member_v', v);
+    else v = localStorage.getItem('hf_member_v') || '';
+  } catch (e) {}
+  if (v) {
+    var f = document.getElementById('app');
+    f.style.display = 'block';
+    f.src = APP_URL + '?v=' + encodeURIComponent(v);
+  } else {
+    document.getElementById('msg').style.display = 'block';
+  }
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
+</script>
+</body>
+</html>

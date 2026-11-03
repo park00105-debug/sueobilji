@@ -10,16 +10,14 @@
 <link rel="apple-touch-icon" href="icon-512.png">
 <style>
   html,body{margin:0;height:100%;background:#fff}
-  /* 구글 안내줄(약 44px)이 화면 밖으로 나가도록 앱을 위로 올려요. 줄이 남으면 숫자를 키우고, 앱 윗부분이 잘리면 줄여요 */
-  :root{--hide:44px}
-  iframe{position:fixed;left:0;top:calc(var(--hide) * -1);width:100%;height:calc(100% + var(--hide));border:0}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
 </style>
 </head>
 <body>
 <!-- 아래 주소를 대표님의 웹앱 배포 주소(…/exec)로 바꿔요 -->
-<iframe id="app" allow="web-share; clipboard-write; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe id="app" allow="clipboard-write; fullscreen" referrerpolicy="no-referrer-when-downgrade"></iframe>
 <script>
-  var APP_URL = 'https://script.google.com/macros/s/AKfycbyEPXcAKFyeW0ulf6aGmtH-2WIJCX08wuqKyQuZm5QAfAIV_6jMKrwRQ8mQfKlIPGb3/exec';
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbzBlUn9Nqvx299CSJBYXM_X4U4940llUbmq7DzhxUl3n-COVu4faJQ82Ty3gg6dioNV/exec';
   document.getElementById('app').src = APP_URL;
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
 </script>
